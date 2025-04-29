@@ -3,6 +3,7 @@ import {
 	ConflictException,
 	Controller,
 	HttpCode,
+	HttpStatus,
 	Post,
 	UsePipes,
 } from "@nestjs/common";
@@ -25,7 +26,7 @@ export class CreateAccountController {
 	constructor(private prisma: PrismaService) {}
 
 	@Post()
-	@HttpCode(201)
+	@HttpCode(HttpStatus.CREATED)
 	@UsePipes(new ZodValidationPipe(createAccountBodySchema))
 	async handle(@Body() body: CreateAccountBodyChema) {
 		const { email, name, password } = body;
