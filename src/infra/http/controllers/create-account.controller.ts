@@ -33,7 +33,7 @@ export class CreateAccountController {
 
 		const userAlreadyExists = await this.prisma.user.findUnique({
 			where: {
-				email: body.email,
+				email,
 			},
 		});
 
